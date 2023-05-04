@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 
-namespace permita_se
+namespace app_web_backend
 {
     public class Startup
     {
@@ -18,14 +18,11 @@ namespace permita_se
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services, sevices.AddDbContext<ApplicationDbContext> options)
         {
-            //DbContext configuration.
-            services.AddDbContext<DbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
-
-            //Services configuration
-            IServiceCollection serviceCollection = services;
+            sevices.AddDbContext<ApplicationDbContext> options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")
+                );
 
             services.AddControllersWithViews();
         }

@@ -1,4 +1,7 @@
-﻿namespace app_web_backend.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+
+namespace app_web_backend.Models
 {
     public class ApplicationDBContext : DbContetx
     {
@@ -6,5 +9,6 @@
         
         { 
         }   
+        public DbSet<Veiculos> Veiculos { get; set; }
     }
 }
